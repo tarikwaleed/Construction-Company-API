@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose';
-import { IShipment } from './shipment.interface';
-import { ITransaction } from './transaction.interface';
+import { IShipment } from 'src/shipment/entities/shipment.interface';
+import { ITransaction } from 'src/transaction/entities/transaction.interface';
 
 export interface ICarrier extends Document {
   _id: mongoose.Types.ObjectId;

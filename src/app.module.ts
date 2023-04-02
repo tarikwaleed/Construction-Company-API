@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
 import { CarrierModule } from './carrier/carrier.module';
+import { ShipmentModule } from './shipment/shipment.module';
+import { EmployeeModule } from './employee/employee.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
-  imports: [CarrierModule],
+  imports: [CarrierModule, ShipmentModule, EmployeeModule, TransactionModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor() {
-    console.log('Connected to the Database');
-  }
-}
+export class AppModule {}
