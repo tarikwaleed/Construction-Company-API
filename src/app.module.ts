@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CarrierModule } from './carrier/carrier.module';
 
 @Module({
   imports: [
@@ -9,6 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
+    CarrierModule,
   ],
   controllers: [AppController],
   providers: [AppService],
