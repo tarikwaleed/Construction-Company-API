@@ -1,5 +1,7 @@
 import mongoose, { ConnectOptions } from 'mongoose';
 
+const { Schema } = mongoose;
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -19,4 +21,4 @@ const connectDB = async () => {
   }
 };
 
-export { connectDB };
+export { connectDB, mongoose, Schema };
