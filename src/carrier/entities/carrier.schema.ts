@@ -62,4 +62,3 @@ carrierSchema.virtual('totalTransactionAmount').get(function () {
 carrierSchema.virtual('balance').get(function () {
   return this.totalShipmentsCost - this.totalTransactionAmount;
 });
-

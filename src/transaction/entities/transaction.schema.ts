@@ -12,8 +12,7 @@ export const transactionSchema = new Schema<ITransaction>(
       required: true,
     },
     employee: {
-      type: Schema.Types.ObjectId,
-      ref: 'Employee',
+      type: String,
       required: true,
     },
     carrier: {
