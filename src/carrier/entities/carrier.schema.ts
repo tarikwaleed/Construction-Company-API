@@ -15,7 +15,6 @@ export const carrierSchema = new Schema<ICarrier>(
   { timestamps: true },
 );
 
-// Virtual fields
 carrierSchema.virtual('shipments', {
   ref: 'Shipment',
   localField: '_id',

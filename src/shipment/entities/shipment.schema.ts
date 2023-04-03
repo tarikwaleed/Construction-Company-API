@@ -47,6 +47,11 @@ export const shipmentSchema = new Schema<IShipment>(
       type: String,
       required: true,
     },
+    carrier: {
+      type: Schema.Types.ObjectId,
+      ref: 'Carrier',
+      required: true,
+    },
   },
   { timestamps: true },
 );
@@ -55,4 +60,4 @@ shipmentSchema.virtual('total_price').get(function (): Number {
   return this.carriage_price * this.material_price * this.vehicle_volume;
 });
 
-module.exports = mongoose.model<IShipment>('Shipment', shipmentSchema);
+// module.exports = mongoose.model<IShipment>('Shipment', shipmentSchema);
