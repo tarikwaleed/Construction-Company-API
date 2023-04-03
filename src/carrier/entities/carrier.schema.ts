@@ -1,6 +1,6 @@
-import { mongoose, Schema } from '../../config/database';
+import mongoose, { Schema } from 'mongoose';
 import { ICarrier } from './carrier.interface';
-const carrierSchema = new Schema<ICarrier>(
+export const carrierSchema = new Schema<ICarrier>(
   {
     name: {
       type: String,
@@ -63,4 +63,3 @@ carrierSchema.virtual('balance').get(function () {
   return this.totalShipmentsCost - this.totalTransactionAmount;
 });
 
-module.exports = mongoose.model<ICarrier>('Carrier', carrierSchema);

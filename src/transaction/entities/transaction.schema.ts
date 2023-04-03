@@ -1,7 +1,7 @@
-import { mongoose, Schema } from 'src/config/database';
+import { Schema } from 'mongoose';
 import { ITransaction } from './transaction.interface';
 
-const transactionSchema = new Schema(
+export const transactionSchema = new Schema<ITransaction>(
   {
     date: {
       type: Date,
@@ -36,5 +36,3 @@ const transactionSchema = new Schema(
   },
   { timestamps: true },
 );
-
-export default mongoose.model<ITransaction>('Transaction', transactionSchema);

@@ -1,14 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CarrierService } from './carrier.service';
 import { CreateCarrierDto } from './dto/create-carrier.dto';
 import { UpdateCarrierDto } from './dto/update-carrier.dto';
+import { ICarrier } from './entities/carrier.interface';
 
-@Controller('carrier')
+@Controller('api/carrier')
 export class CarrierController {
   constructor(private readonly carrierService: CarrierService) {}
 
   @Post()
-  create(@Body() createCarrierDto: CreateCarrierDto) {
+  create(@Body() createCarrierDto: CreateCarrierDto): Promise<ICarrier> {
     return this.carrierService.create(createCarrierDto);
   }
 

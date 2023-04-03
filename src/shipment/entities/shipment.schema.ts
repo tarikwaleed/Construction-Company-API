@@ -1,7 +1,7 @@
 import { IShipment } from './shipment.interface';
-import { mongoose, Schema } from '../../config/database';
+import mongoose, { Schema } from 'mongoose';
 
-const shipmentSchema = new Schema<IShipment>(
+export const shipmentSchema = new Schema<IShipment>(
   {
     date: {
       type: Date,

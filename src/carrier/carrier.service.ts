@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCarrierDto } from './dto/create-carrier.dto';
 import { UpdateCarrierDto } from './dto/update-carrier.dto';
+import { CarrierRepository } from './carrier.repository';
+import { ICarrier } from './entities/carrier.interface';
 
 @Injectable()
 export class CarrierService {
-  create(createCarrierDto: CreateCarrierDto) {
-    return 'This action adds a new carrier';
+  constructor(private readonly carrierRepository: CarrierRepository) {}
+  async create(createCarrierDto: CreateCarrierDto): Promise<ICarrier> {
+    const newCarrier = await this.carrierRepository.create(createCarrierDto);
+    return newCarrier;
   }
 
   findAll() {
