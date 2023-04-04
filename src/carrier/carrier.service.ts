@@ -3,23 +3,26 @@ import { CreateCarrierDto } from './dto/create-carrier.dto';
 import { UpdateCarrierDto } from './dto/update-carrier.dto';
 import { CarrierRepository } from './carrier.repository';
 import { ICarrier } from './entities/carrier.interface';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class CarrierService {
-  constructor(private readonly carrierRepository: CarrierRepository) {}
-  async create(createCarrierDto: CreateCarrierDto): Promise<ICarrier> {
-    const newCarrier = await this.carrierRepository.create(createCarrierDto);
-    return newCarrier;
+  constructor(
+    @InjectModel('Carrier') private readonly carrierModel: Model<ICarrier>,
+    @InjectModel('Shipment') private readonly shipmentModel: Model<ICarrier>,
+  ) {}
+  create() {
+    return `This action returns all carrier`;
   }
 
   findAll() {
     return `This action returns all carrier`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} carrier`;
+  async findOne(id: string): Promise<ICarrier> {
+    return await this.carrierModel.findById(id).populate('shipments')
   }
-
   update(id: number, updateCarrierDto: UpdateCarrierDto) {
     return `This action updates a #${id} carrier`;
   }

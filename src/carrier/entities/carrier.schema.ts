@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { ICarrier } from './carrier.interface';
+import Shipment from '../../shipment/entities/shipment.schema';
 export const carrierSchema = new Schema<ICarrier>(
   {
     name: {
@@ -16,9 +17,9 @@ export const carrierSchema = new Schema<ICarrier>(
 );
 
 carrierSchema.virtual('shipments', {
-  ref: 'Shipment',
+  ref: Shipment.name,
   localField: '_id',
-  foreignField: 'carrier_id',
+  foreignField: 'carrier',
   justOne: false,
   populate: true,
 });
@@ -26,7 +27,7 @@ carrierSchema.virtual('shipments', {
 carrierSchema.virtual('shipmentsCount', {
   ref: 'Shipment',
   localField: '_id',
-  foreignField: 'carrier_id',
+  foreignField: 'carrier',
   count: true,
 });
 
@@ -39,7 +40,7 @@ carrierSchema.virtual('totalShipmentsCost').get(function () {
 carrierSchema.virtual('transactions', {
   ref: 'Transaction',
   localField: '_id',
-  foreignField: 'carrier_id',
+  foreignField: 'carrier',
   justOne: false,
   populate: true,
 });
@@ -47,7 +48,7 @@ carrierSchema.virtual('transactions', {
 carrierSchema.virtual('transactionsCount', {
   ref: 'Transaction',
   localField: '_id',
-  foreignField: 'carrier_id',
+  foreignField: 'carrier',
   count: true,
 });
 

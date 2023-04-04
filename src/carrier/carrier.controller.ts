@@ -16,10 +16,6 @@ import { ICarrier } from './entities/carrier.interface';
 export class CarrierController {
   constructor(private readonly carrierService: CarrierService) {}
 
-  @Post()
-  create(@Body() createCarrierDto: CreateCarrierDto): Promise<ICarrier> {
-    return this.carrierService.create(createCarrierDto);
-  }
 
   @Get()
   findAll() {
@@ -28,7 +24,7 @@ export class CarrierController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.carrierService.findOne(+id);
+    return this.carrierService.findOne(id);
   }
 
   @Patch(':id')

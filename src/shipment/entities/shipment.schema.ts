@@ -60,4 +60,5 @@ shipmentSchema.virtual('total_price').get(function (): Number {
   return this.carriage_price * this.material_price * this.vehicle_volume;
 });
 
-// module.exports = mongoose.model<IShipment>('Shipment', shipmentSchema);
+const Shipment = mongoose.model<IShipment>('Shipment', shipmentSchema);
+export default Shipment;

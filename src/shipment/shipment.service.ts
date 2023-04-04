@@ -39,8 +39,8 @@ export class ShipmentService {
     return `This action returns all shipment`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} shipment`;
+  async findOne(id: string): Promise<IShipment> {
+    return await this.shipmentModel.findById(id).populate('carrier').exec();
   }
 
   update(id: number, updateShipmentDto: UpdateShipmentDto) {
